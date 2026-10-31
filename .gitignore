@@ -1,0 +1,12 @@
+# 프로그램 구동에 필요한 파일만 올린다 (나머지는 모두 제외)
+/*
+!/.gitignore
+!/index.html
+!/style.css
+!/package.json
+!/package-lock.json
+!/assets/
+!/src/
+
+# 테스트 파일은 구동에 필요 없다
+*.test.js

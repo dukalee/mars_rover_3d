@@ -1,0 +1,9 @@
+export const MAP_SIZE = 10;
+export const VIEW_SIZE = 21;
+export const INITIAL_FUEL = 100;
+export const SEND_COST = 3;
+export const MOVE_COST = 1;
+export const COLLIDE_COST = 2;
+export const COLLECT_COST = 1;
+export const ROCK_COUNT = 8;
+export const SAMPLE_COUNT = 5;

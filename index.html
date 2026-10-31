@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mars Rover Simulator</title>
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Condensed:wght@500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    { "imports": { "three": "/node_modules/three/build/three.module.js" } }
+  </script>
+</head>
+<body>
+  <main>
+    <section id="title">
+      <div class="mc-card">
+        <div class="mc-bar"><span>MARS ROVER PROGRAM</span><b>LINK OK</b></div>
+        <div class="mc-body">
+          <div class="mc-eyebrow">MISSION CONTROL · 탐사 시뮬레이터</div>
+          <h1><span>Mars</span> <span class="rv">Rover</span> <span class="sim">Simulator</span></h1>
+          <p class="mc-lead">미지의 행성을 커맨드로 탐험하며 샘플을 모두 채집하세요.</p>
+          <table class="mc-brief">
+            <tr><td>MAP</td><td id="brief-map"></td></tr>
+            <tr><td>SAMPLES</td><td id="brief-samples"></td></tr>
+            <tr><td>FUEL</td><td id="brief-fuel"></td></tr>
+            <tr><td>COMMANDS</td><td>L · R · M · C</td></tr>
+          </table>
+          <div class="mc-actions"><button id="start-button" type="button">START MISSION</button></div>
+        </div>
+      </div>
+      <div class="mc-tag" aria-hidden="true">SOL 0147<br>LTST 14:32:01<br>RSSI −87 dBm</div>
+      <div class="mc-log" aria-hidden="true">&gt; link established<br>&gt; rover telemetry nominal<br>&gt; awaiting command_</div>
+    </section>
+    <section id="sim" hidden>
+      <div id="view3d"></div>
+      <div id="console">
+        <div id="map"></div>
+        <div id="hud"></div>
+        <div id="controls">
+          <div id="telemetry" aria-hidden="true"></div>
+          <input id="command-input" type="text" autocomplete="off">
+          <button id="send-button" type="button">SEND</button>
+        </div>
+      </div>
+    </section>
+    <section id="result" hidden>
+      <div class="mc-card">
+        <div class="mc-bar"><span>MISSION REPORT</span><b class="mc-flag"></b></div>
+        <div class="mc-body">
+          <p id="result-status"></p>
+          <div class="mc-stats">
+            <div class="mc-st"><span class="k">MINERAL</span><div id="result-slots" class="mc-slots"></div><p id="result-samples"></p></div>
+            <div class="mc-st"><span class="k">FUEL LEFT</span><div class="mc-meter"><b id="result-meter"></b></div><p id="result-fuel"></p></div>
+          </div>
+          <div class="mc-actions"><button id="restart-button" type="button">다시 시작</button></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
