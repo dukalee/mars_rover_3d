@@ -22,6 +22,7 @@ export function initScreens(doc = document, onUpdate = () => {}) {
     renderMap(doc.getElementById('map'), game);
     renderHud(doc.getElementById('hud'), game);
     show('sim');
+    doc.getElementById('command-input').focus();
     onUpdate(game);
   });
 
@@ -72,6 +73,7 @@ export function initScreens(doc = document, onUpdate = () => {}) {
       button.disabled = false;
       if (game.status === 'playing') {
         input.value = '';
+        input.focus();
         return;
       }
       showResult(game);
@@ -101,6 +103,14 @@ export function initScreens(doc = document, onUpdate = () => {}) {
   }
 
   doc.getElementById('send-button').addEventListener('click', submit);
+
+  // 3D 화면이나 버튼을 눌러 포커스가 빠져도, 글자를 치면 입력창으로 돌아온다.
+  doc.addEventListener('keydown', (e) => {
+    const input = doc.getElementById('command-input');
+    if (doc.getElementById('sim').hidden || input.disabled || doc.activeElement === input) return;
+    if (e.ctrlKey || e.metaKey || e.altKey || e.key.length !== 1) return;
+    input.focus();
+  });
 
   doc.getElementById('command-input').addEventListener('keydown', (e) => {
     if (e.key !== 'Enter' || e.target.disabled) return;
